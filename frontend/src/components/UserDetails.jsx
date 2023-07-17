@@ -33,7 +33,7 @@ const UserDetails = () => {
     const fetchUser = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/users/${id}`
+          `https://serene-peak-68584-65eee5519a14.herokuapp.com/api/users/${id}`
         );
         const data = await response.json();
         setUser(data);
@@ -49,7 +49,7 @@ const UserDetails = () => {
   const handleWashCar = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/users/${id}/wash`,
+        `https://serene-peak-68584-65eee5519a14.herokuapp.com/api/users/${id}/wash`,
         {
           method: "POST",
         }

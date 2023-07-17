@@ -34,7 +34,7 @@ function UserDashboard() {
   
   const fetchUserData = async (userId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/users/${userId}`);
+      const response = await fetch(`https://serene-peak-68584-65eee5519a14.herokuapp.com/api/users/${userId}`);
       const data = await response.json();
 
       // console.log('Response:', data);

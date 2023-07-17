@@ -39,7 +39,7 @@ const RegistrationForm = () => {
     };
 
     try {
-      const response = await axios.post(`http://localhost:5000/api/users/${carWashId}/register`, userData);
+      const response = await axios.post(`https://serene-peak-68584-65eee5519a14.herokuapp.com/api/users/${carWashId}/register`, userData);
       toast.success('Registration successful');
       navigate(`/staff/dashboard/${carWashId}`); // Navigate to the staff dashboard with the carWashId
     } catch (error) {

@@ -12,7 +12,7 @@ const CarWashList = () => {
   // Function to fetch car washes
   const fetchCarWashes = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/carwashes');
+      const response = await axios.get('https://serene-peak-68584-65eee5519a14.herokuapp.com/api/carwashes');
       setCarWashes(response.data);
     } catch (error) {
       console.error('Error fetching car washes:', error);
