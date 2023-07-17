@@ -36,8 +36,8 @@ function Header() {
       className='header'
     >
       
-        <img style={{ width: '100px', height: '100px', }} src={require('../images/Logo.png')} alt='' />
-        <h1 className='carwash-h'> ASHWOOD CAR WASH</h1>
+        <img style={{ width: '100px', height: '100px', }} src={require('../images/circle-logo-png.webp')} alt='' />
+        <h1 className='carwash-h'> CAR WASH NAME</h1>
       
 
       {/* Hamburger menu */}
