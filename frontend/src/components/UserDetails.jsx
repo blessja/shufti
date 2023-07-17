@@ -1,21 +1,45 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import Snackbar from "@material-ui/core/Snackbar";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+
+
+
+
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#789cbb", // Replace with your desired custom color
+    },
+  },
+});
+
+
+
 
 const UserDetails = () => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
+
+  const handleHomeClick = () => {
+    window.history.back(); // Go back to the previous page
+  };
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/users/${id}`);
-        const data = response.data;
+        const response = await fetch(
+          `http://localhost:5000/api/users/${id}`
+        );
+        const data = await response.json();
         setUser(data);
-        setIsButtonDisabled(localStorage.getItem(id) === 'true');
+        setIsButtonDisabled(localStorage.getItem(id) === "true");
       } catch (error) {
-        console.error('Error fetching user:', error);
+        console.error("Error fetching user:", error);
       }
     };
 
@@ -24,153 +48,115 @@ const UserDetails = () => {
 
   const handleWashCar = async () => {
     try {
-      const response = await axios.post(`http://localhost:5000/api/users/${id}/wash`);
-      const data = response.data;
+      const response = await fetch(
+        `http://localhost:5000/api/users/${id}/wash`,
+        {
+          method: "POST",
+        }
+      );
+      const data = await response.json();
       setUser(data);
-      console.log('Wash history updated');
+      console.log("Wash history updated");
       setIsButtonDisabled(true);
-      localStorage.setItem(id, 'true');
-      setTimeout(() => {
-        setIsButtonDisabled(false);
-        localStorage.removeItem(id);
-      }, 24 * 60 * 60 * 1000);
+      localStorage.setItem(id, "true");
+      setShowNotification(true);
     } catch (error) {
-      console.error('Error washing car:', error);
+      console.error("Error washing car:", error);
     }
   };
+
+  const handleNotificationClose = () => {
+    setShowNotification(false);
+  };
+
+  useEffect(() => {
+    const handlePageReload = () => {
+      setIsButtonDisabled(localStorage.getItem(id) === "true");
+    };
+
+    window.addEventListener("beforeunload", handlePageReload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handlePageReload);
+    };
+  }, [id]);
 
   if (!user) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div style={{ background: '#FDEBD0', padding: '20px', borderRadius: '8px' }}>
-      <h2 style={{ marginBottom: '20px' }}>User Details</h2>
-      <div style={{ background: 'white', padding: '20px', borderRadius: '8px' }}>
-        <p style={{ marginBottom: '10px' }}>Name: {user.name}</p>
-        <p style={{ marginBottom: '10px' }}>Phone: {user.phone}</p>
-        <p style={{ marginBottom: '10px' }}>Number Plate: {user.number_plate}</p>
-        <p style={{ marginBottom: '10px' }}>Car: {user.car}</p>
-        <button
+    <ThemeProvider theme={theme}>
+      <div
+        style={{ background: "#fff", padding: "20px", borderRadius: "8px" }}
+      >
+        <h3 style={{ marginBottom: "20px", color: "#4682B4", fontFamily: "Montserrat", paddingTop:"40px", fontWeight: "600", fontSize: "19px" }}>
+          RECORD A WASH
+        </h3>
+        <div
           style={{
-            background: '#F9AE40',
-            color: 'white',
-            padding: '10px 20px',
-            borderRadius: '4px',
-            cursor: isButtonDisabled ? 'not-allowed' : 'pointer',
-            opacity: isButtonDisabled ? 0.5 : 1,
+            background: "#4682B4",
+            opacity: "1",
+            padding: "20px",
+            borderRadius: "8px",
+            textAlign: "left"
           }}
-          onClick={handleWashCar}
-          disabled={isButtonDisabled}
         >
-          Wash Car
-        </button>
-        {isButtonDisabled && (
-          <div
+        <div>
+        <p
             style={{
-              background: 'green',
-              color: 'white',
-              padding: '10px',
-              borderRadius: '4px',
-              marginTop: '10px',
+              marginBottom: "10px",
+              opacity: "1",
+              color: "#045293",
+              fontFamily: "Montserrat",
+              fontWeight: "bolder"
             }}
           >
-            Car wash notification sent!
-          </div>
-        )}
+          {user.name}
+          </p>
+          <p style={{ marginBottom: "10px", color: "#fff", fontFamily: "Montserrat",
+              fontWeight: "lighter" }}>{user.phone}</p>
+          <p style={{ marginBottom: "10px",  color: "#fff",  fontFamily: "Montserrat",
+              fontWeight: "lighter" }}>
+             {user.number_plate}
+          </p>
+          <p style={{ marginBottom: "10px", color: "#fff",fontFamily: "Montserrat",
+              fontWeight: "lighter"  }}> {user.car}</p>
+        </div>
+        
+        </div>
+        <div style={{ display: "flex", justifyContent: "center", paddingTop: "30px",}}>
+        <Button
+            variant="contained"
+            
+            onClick={handleWashCar}
+            disabled={isButtonDisabled}
+            style={{ marginTop: "10px", backgroundColor: "#4682B4",color: "#fff",   }}
+            component="button"
+            
+          >
+            {isButtonDisabled ? "Car Washed" : "Wash Car"}
+          </Button>
+        </div>
+        <Button
+          style={{ marginTop: "60px", backgroundColor: "#4682B4", color: "#fff", }}
+          variant="contained"
+         
+          onClick={handleHomeClick}
+
+          component="button"
+        >
+          HOME
+        </Button>
       </div>
-    </div>
+      <Snackbar
+        open={showNotification}
+        autoHideDuration={3000}
+        onClose={handleNotificationClose}
+        message="Wash successfully recorded"
+      />
+    </ThemeProvider>
   );
 };
 
 export default UserDetails;
-
-
-
-// import React, { useEffect, useState } from 'react';
-// import { useParams } from 'react-router-dom';
-
-// const UserDetails = () => {
-//   const { id } = useParams();
-//   const [user, setUser] = useState(null);
-//   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-
-//   useEffect(() => {
-//     const fetchUser = async () => {
-//       try {
-//         const response = await fetch(`http://localhost:5000/api/users/${id}`);
-//         const data = await response.json();
-//         setUser(data);
-//         setIsButtonDisabled(localStorage.getItem(id) === 'true');
-//       } catch (error) {
-//         console.error('Error fetching user:', error);
-//       }
-//     };
-
-//     fetchUser();
-//   }, [id]);
-
-//   const handleWashCar = async () => {
-//     try {
-//       const response = await fetch(`http://localhost:5000/api/users/${id}/wash`, {
-//         method: 'POST',
-//       });
-//       const data = await response.json();
-//       setUser(data);
-//       console.log('Wash history updated');
-//       setIsButtonDisabled(true);
-//       localStorage.setItem(id, 'true');
-//       setTimeout(() => {
-//         setIsButtonDisabled(false);
-//         localStorage.removeItem(id);
-//       }, 24 * 60 * 60 * 1000);
-//     } catch (error) {
-//       console.error('Error washing car:', error);
-//     }
-//   };
-
-//   if (!user) {
-//     return <div>Loading...</div>;
-//   }
-
-//   return (
-//     <div style={{ background: '#FDEBD0', padding: '20px', borderRadius: '8px' }}>
-//       <h2 style={{ marginBottom: '20px' }}>User Details</h2>
-//       <div style={{ background: 'white', padding: '20px', borderRadius: '8px' }}>
-//         <p style={{ marginBottom: '10px' }}>Name: {user.name}</p>
-//         <p style={{ marginBottom: '10px' }}>Phone: {user.phone}</p>
-//         <p style={{ marginBottom: '10px' }}>Number Plate: {user.number_plate}</p>
-//         <p style={{ marginBottom: '10px' }}>Car: {user.car}</p>
-//         <button
-//           style={{
-//             background: '#F9AE40',
-//             color: 'white',
-//             padding: '10px 20px',
-//             borderRadius: '4px',
-//             cursor: isButtonDisabled ? 'not-allowed' : 'pointer',
-//             opacity: isButtonDisabled ? 0.5 : 1,
-//           }}
-//           onClick={handleWashCar}
-//           disabled={isButtonDisabled}
-//         >
-//           Wash Car
-//         </button>
-//         {isButtonDisabled && (
-//           <div
-//             style={{
-//               background: 'green',
-//               color: 'white',
-//               padding: '10px',
-//               borderRadius: '4px',
-//               marginTop: '10px',
-//             }}
-//           >
-//             Car wash notification sent!
-//           </div>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default UserDetails;

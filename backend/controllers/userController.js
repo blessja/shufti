@@ -65,24 +65,23 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route   POST /api/users/login
 // @access  Public
 const loginUser = asyncHandler(async (req, res) => {
-  const { phone, password } = req.body
-  const { carwash_id} = req.params;
+  const { phone, password } = req.body;
 
   // Check for user phone
-  const user = await User.findOne({ carwashId: carwash_id, phone })
+  const user = await User.findOne({ phone });
 
   if (user && (await bcrypt.compare(password, user.password))) {
     res.json({
       _id: user.id,
-      // number_plate,
+
       phone: user.phone,
       token: generateToken(user._id),
-    })
+    });
   } else {
-    res.status(400)
-    throw new Error('Invalid credentials')
+    res.status(400);
+    throw new Error("Invalid credentials");
   }
-})
+});
 
 // @desc    Get user data
 // @route   GET /api/users/me
@@ -121,7 +120,7 @@ const getUsers = asyncHandler(async (req, res) => {
 const getUserById = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
-  const user = await User.findById(id).populate('carwash_id');
+  const user = await User.findById(id)
 
   if (user) {
     res.json(user);

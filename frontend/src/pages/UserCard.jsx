@@ -10,10 +10,16 @@ const UserCard = ({ user }) => {
 
   return (
     <div>
-      <h3>{user.name}</h3> {/* Make sure 'user' and 'name' exist before accessing */}
-      <p>Name: {user.Name}</p>
-      <p>Phone: {user.phone}</p>
-      <Link to={`/users/${user._id}`}>View Details</Link>
+      <div>
+      <h4 style={{color: "#045293",
+              fontFamily: "Montserrat",
+              fontWeight: "bolder"}}>{user.name}</h4> {/* Make sure 'user' and 'name' exist before accessing */}
+      {/* <p>Name: {user.Name}</p> */}
+      <p >Phone: {user.phone}</p>
+      <p style={{color: '#4682B4'}}>{user.car}</p>
+      <Link style={{color: '#FB0728', textDecoration: 'underline', opacity: '1', }} to={`/users/${user._id}`}>Register a Wash</Link>
+      </div>
+     
     </div>
   );
 };

@@ -17,7 +17,7 @@ const { updateWashHistory } = require('../controllers/washController');
 
 router.get('/:id', getUserById);
 router.post('/:carwash_id/register', registerUser);
-// router.post('/:carwash_id/users/login', loginUser) // Login user to a specific car wash
+router.post('/:carwash_id/login', loginUser) // Login user to a specific car wash
 router.post('/login', loginUser);
 router.get('/me', protect, getMe);
 router.get('/', getUsers);
