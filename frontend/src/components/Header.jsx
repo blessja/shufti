@@ -1,16 +1,14 @@
-import { FaBars, FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa';
+import { FaBars } from 'react-icons/fa';
 import { IconContext } from "react-icons";
 import { useState, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import {  useNavigate } from 'react-router-dom';
+import {  useDispatch } from 'react-redux';
 import { logout, reset } from '../features/auth/authSlice';
 import { logoutStaff, resetStaff } from '../features/staff/staffSlice';
 
 function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
-  const { staff } = useSelector((state) => state.staff);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef(null);
 
@@ -32,7 +30,7 @@ function Header() {
 
   return (
     <header
-      style={{ background: 'white', padding: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}
+      style={{ background: 'white', padding: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0px' }}
       className='header'
     >
       
@@ -47,7 +45,7 @@ function Header() {
           <input type="checkbox" id="mobile-menu-checkbox" ref={mobileMenuRef} style={{ display: 'none' }} />
           {isMobileMenuOpen && (
             <ul className='mobile-menu-items'>
-             
+             {/* <img src="" alt="" /> */}
             </ul>
           )}
         </div>

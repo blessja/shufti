@@ -73,7 +73,7 @@ const RegistrationForm = () => {
               id="phone"
               name="phone"
               value={phone}
-              placeholder="Enter your phone number"
+              placeholder="Enter customer's cell number"
               onChange={handleChange}
               autoComplete="on"
             />
