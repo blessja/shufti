@@ -111,8 +111,8 @@ function UserDashboard() {
       ) : (
         <Typography variant="body1">{error ? error : 'Loading user information...'}</Typography>
       )}
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '30px', marginLeft: "40px" }}>
-        <button className='btn' onClick={onLogout}>
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '30px',  }}>
+        <button className="btn btn-block" onClick={onLogout}>
           EXIT
         </button>
       </div>

@@ -13,6 +13,9 @@
   "author": "Blessing Jackson",
   "license": "MIT",
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@mui/material": "^5.14.4",
+    "@mui/styled-engine-sc": "^5.12.0",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "cors": "^2.8.5",
@@ -21,7 +24,8 @@
     "express-async-handler": "^1.2.0",
     "faker": "^5.5.3",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^7.2.4"
+    "mongoose": "^7.2.4",
+    "styled-components": "^5.3.11"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.22.3",

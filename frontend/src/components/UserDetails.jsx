@@ -69,17 +69,17 @@ const UserDetails = () => {
     setShowNotification(false);
   };
 
-  useEffect(() => {
-    const handlePageReload = () => {
-      setIsButtonDisabled(localStorage.getItem(id) === "true");
-    };
+  // useEffect(() => {
+  //   const handlePageReload = () => {
+  //     setIsButtonDisabled(localStorage.getItem(id) === "true");
+  //   };
 
-    window.addEventListener("beforeunload", handlePageReload);
+  //   window.addEventListener("beforeunload", handlePageReload);
 
-    return () => {
-      window.removeEventListener("beforeunload", handlePageReload);
-    };
-  }, [id]);
+  //   return () => {
+  //     window.removeEventListener("beforeunload", handlePageReload);
+  //   };
+  // }, [id]);
 
   if (!user) {
     return <div>Loading...</div>;
@@ -130,12 +130,12 @@ const UserDetails = () => {
             variant="contained"
             
             onClick={handleWashCar}
-            disabled={isButtonDisabled}
+            // disabled={isButtonDisabled}
             style={{ marginTop: "10px", backgroundColor: "#4682B4",color: "#fff",   }}
             component="button"
             
-          >
-            {isButtonDisabled ? "Car Washed" : "Wash Car"}
+          >Wash Car
+            {/* {isButtonDisabled ? "Car Washed" : "Wash Car"} */}
           </Button>
         </div>
         <Button
