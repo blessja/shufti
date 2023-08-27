@@ -8,12 +8,13 @@ const RegistrationForm = () => {
   const { carWashId } = useParams();
   const [formData, setFormData] = useState({
     number_plate: "",
+    name: "",
     phone: "",
     password: "",
     password2: "",
   });
 
-  const { number_plate, phone, password, password2 } = formData;
+  const { number_plate, name, phone, password, password2 } = formData;
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -33,6 +34,7 @@ const RegistrationForm = () => {
 
     const userData = {
       number_plate,
+      name,
       phone,
       password,
       carWashId, // Include the carWashId in the data
@@ -61,7 +63,19 @@ const RegistrationForm = () => {
               id="number_plate"
               name="number_plate"
               value={number_plate}
-              placeholder="Customer number plate"
+              placeholder="Customer's number plate"
+              onChange={handleChange}
+              autoComplete="on"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="name"
+              className="form-control"
+              id="name"
+              name="name"
+              value={name}
+              placeholder="Customer's name"
               onChange={handleChange}
               autoComplete="on"
             />

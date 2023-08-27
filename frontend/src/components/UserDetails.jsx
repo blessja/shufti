@@ -107,7 +107,7 @@ const UserDetails = () => {
             style={{
               marginBottom: "10px",
               opacity: "1",
-              color: "#045293",
+              color: "white",
               fontFamily: "Montserrat",
               fontWeight: "bolder"
             }}
@@ -126,12 +126,12 @@ const UserDetails = () => {
         
         </div>
         <div style={{ display: "flex", justifyContent: "center", paddingTop: "30px",}}>
-        <Button
+        <Button className="btn"
             variant="contained"
             
             onClick={handleWashCar}
             // disabled={isButtonDisabled}
-            style={{ marginTop: "10px", backgroundColor: "#4682B4",color: "#fff",   }}
+            style={{ marginTop: "10px", backgroundColor: "#4682B4",color: "#fff", width: "100%", borderRadius: "25px", fontFamily: "Montserrat",   }}
             component="button"
             
           >Wash Car
@@ -139,7 +139,7 @@ const UserDetails = () => {
           </Button>
         </div>
         <Button
-          style={{ marginTop: "60px", backgroundColor: "#4682B4", color: "#fff", }}
+          style={{ marginTop: "60px", backgroundColor: "#fff", color: "#4682B4", border: "1px solid #4682B4", fontFamily: "Montserrat", width: "100%", borderRadius: "25px", }}
           variant="contained"
          
           onClick={handleHomeClick}
