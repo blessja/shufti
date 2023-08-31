@@ -51,7 +51,7 @@ const RegistrationForm = () => {
 
   return (
     <div>
-      <section className="heading">
+      <section style={{ paddingTop: '20px', paddingBottom: '20px'}} className="heading">
         <h4>REGISTER NEW CUSTOMER</h4>
       </section>
       <section className="form">
