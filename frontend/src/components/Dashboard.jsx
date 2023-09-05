@@ -39,14 +39,14 @@ const Dashboard = ({carwashId}) => {
     <>
       <section className='heading'>
         <div className="main_image ">
-          <img src={myImage} alt="carwash" style={{ width: '100%' }} />
+          <img src={myImage} alt="carwash" style={{ width: '100%', objectFit: 'cover', }} />
        
         </div>
-        <div style={{marginTop: '30px', alignItems: 'center'}} className="carwashname">
+        <div style={{paddingTop: '20px', alignItems: 'center', textAlign: 'center'}} className="carwashname">
           <p style={{fontSize: '27px', fontWeight: "bold", color: 'black'}}>Welcome to</p>
-          <p style={{fontSize: '40px', fontWeight: 'bold',}}>{carWash?.name}</p>
+          <p style={{fontSize: '30px', fontWeight: 'bold', textAlign: 'center', }}>{carWash?.name}</p>
         </div>
-        <div style={{display: 'flex',marginTop: '30px', justifyContent: 'center' }} className="btns">
+        <div style={{display: 'flex',marginTop: '25px', justifyContent: 'center' }} className="btns">
           <button style={{ marginRight: '20px'}}  className='btn ' onClick={() => navigate(`/login/${id}`)}>Customer Login</button>
           <button className='btn ' onClick={() => navigate(`/staff/login/${id}`)}>Carwash Login</button>
         </div>

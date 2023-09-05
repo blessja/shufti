@@ -60,7 +60,7 @@ function Login() {
   return (
     <>
      <section className='heading'>
-        <h1 style={{fontSize: "23px", fontWeight: "600", paddingTop: "20px"}} className='login-title'>
+        <h1 style={{fontSize: "23px", fontWeight: "600", paddingTop: "20px", paddingBottom: "20px"}} className='login-title'>
         LOG IN
         </h1>
        
