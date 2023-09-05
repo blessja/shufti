@@ -36,8 +36,8 @@ const StaffDashboard = () => {
 
   return (
     <section>
-      {/* <button onClick={handleLogout} style={{ background: 'none', border: '5px', color: '#4682B4', cursor: 'pointer' }}>Logout</button> */}
-      <Button style={{ marginTop: '20px'}} onClick={handleLogout} variant="contained">Logout</Button>
+      <button onClick={handleLogout} style={{ background: 'none', border: '5px', color: '#4682B4', cursor: 'pointer' }}>Logout</button>
+      {/* <Button style={{ marginTop: '20px'}} onClick={handleLogout} variant="contained">Logout</Button> */}
       <div className="hd">
         <h2 className='stdb' style={{ color: '#4682B4', paddingBottom: '20px', marginTop: "30px", fontWeight: "600" }}>DASHBOARD</h2>
       </div>
@@ -64,9 +64,9 @@ const StaffDashboard = () => {
         </button>
       </div>
       <div style={{ padding: '20px', background: '#DBE2ED', opacity: '1' }}>
-        <h4 style={{ marginBottom: '20px', color: '#4682B4' }}>REGISTERED CUSTOMERS</h4>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginRight: 'auto', justifyContent: 'center', marginLeft: 'auto', opacity: '0.7' }}>
-          {users.map((user) => (
+      <h4 style={{  color: '#4682B4' }}>REGISTERED CUSTOMERS</h4>
+      <div style={{ display: 'flex', marginTop: '20px', flexWrap: 'wrap', gap: '20px', marginRight: 'auto', justifyContent: 'center', marginLeft: 'auto',  }}>
+      {users.slice().reverse().map((user) => (
             <div
               className="user-card"
               key={user._id}
