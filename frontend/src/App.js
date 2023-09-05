@@ -27,7 +27,7 @@ function App() {
             <Route path='/:carWashId/user/dashboard/' element={<UserDashboard />} />
             <Route path='/staff/dashboard/:carWashId' element={<StaffDashboard />} />
             <Route path='/staff/dashboard/' element={<StaffDashboard />} />
-            <Route path='/users/:id' element={<UserDetails />} />
+            <Route path='/users/:id/:carWashId' element={<UserDetails />} />
             <Route path='/profile' element={<ProfileEdit />} />
             <Route path='/register-customer/:carWashId' element={<RegistrationForm />} /> 
             <Route path='/:id/dashboard' element={<Dashboard />} />

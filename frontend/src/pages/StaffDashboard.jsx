@@ -64,9 +64,9 @@ const StaffDashboard = () => {
         </button>
       </div>
       <div style={{ padding: '20px', background: '#DBE2ED', opacity: '1' }}>
-      <h4 style={{  color: '#4682B4' }}>REGISTERED CUSTOMERS</h4>
-      <div style={{ display: 'flex', marginTop: '20px', flexWrap: 'wrap', gap: '20px', marginRight: 'auto', justifyContent: 'center', marginLeft: 'auto',  }}>
-      {users.slice().reverse().map((user) => (
+        <h4 style={{ marginBottom: '20px', color: '#4682B4' }}>REGISTERED CUSTOMERS</h4>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginRight: 'auto', justifyContent: 'center', marginLeft: 'auto', opacity: '0.7' }}>
+          {users.map((user) => (
             <div
               className="user-card"
               key={user._id}
