@@ -107,7 +107,7 @@ const UserDetails = () => {
             style={{
               marginBottom: "10px",
               opacity: "1",
-              color: "#045293",
+              color: "white",
               fontFamily: "Montserrat",
               fontWeight: "bolder"
             }}
@@ -131,16 +131,15 @@ const UserDetails = () => {
             
             onClick={handleWashCar}
             // disabled={isButtonDisabled}
-            style={{ marginTop: "10px", backgroundColor: "#4682B4",color: "#fff",   }}
+            style={{ marginTop: "10px", backgroundColor: "#4682B4",color: "#fff", width: "100%", borderRadius: "25px", fontFamily: "Montserrat",   }}
             component="button"
-            
           >Wash Car
             {/* {isButtonDisabled ? "Car Washed" : "Wash Car"} */}
           </Button>
         </div>
         <Button
-          style={{ marginTop: "60px", backgroundColor: "#4682B4", color: "#fff", }}
-          variant="contained"
+         style={{ marginTop: "60px", backgroundColor: "#fff", color: "#4682B4", border: "1px solid #4682B4", fontFamily: "Montserrat", width: "100%", borderRadius: "25px", }}
+         variant="contained"
          
           onClick={handleHomeClick}
 
