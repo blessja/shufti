@@ -20,7 +20,7 @@ const StaffDashboard = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(`https://serene-peak-68584-65eee5519a14.herokuapp.com/api/carwashes/${carWashId}/users`);
+        const response = await axios.get(`https://shufti-server.onrender.com/api/carwashes/${carWashId}/users`);
         setUsers(response.data);
       } catch (error) {
         console.error('Error fetching users:', error);

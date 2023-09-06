@@ -24,7 +24,7 @@ const Dashboard = ({carwashId}) => {
 
   const fetchCarWashData = async (carWashId) => {
     try {
-      const response = await axios.get(`https://serene-peak-68584-65eee5519a14.herokuapp.com/api/carwashes/${carWashId}`);
+      const response = await axios.get(`https://shufti-server.onrender.com/api/carwashes/${carWashId}`);
       // Process the response data
       
       setCarWash(response.data);

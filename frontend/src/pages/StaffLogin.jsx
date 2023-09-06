@@ -26,7 +26,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`https://serene-peak-68584-65eee5519a14.herokuapp.com/api/staff/${carwashId}/login`, {
+      const response = await axios.post(`https://shufti-server.onrender.com/api/staff/${carwashId}/login`, {
         phone,
         password,
       });
