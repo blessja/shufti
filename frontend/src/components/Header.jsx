@@ -1,32 +1,8 @@
-import { FaBars } from 'react-icons/fa';
-import { IconContext } from "react-icons";
-import { useState, useRef } from 'react';
-import {  useNavigate } from 'react-router-dom';
-import {  useDispatch } from 'react-redux';
-import { logout, reset } from '../features/auth/authSlice';
-import { logoutStaff, resetStaff } from '../features/staff/staffSlice';
+
 
 function Header() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const mobileMenuRef = useRef(null);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
 
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
-
-  const onLogout = () => {
-    dispatch(logout());
-    dispatch(logoutStaff());
-    dispatch(reset());
-    dispatch(resetStaff());
-    navigate('/');
-  };
 
   return (
     <header

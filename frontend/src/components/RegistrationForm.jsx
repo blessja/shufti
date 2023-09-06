@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from 'axios';
-import { FaUser } from "react-icons/fa";
+
 
 const RegistrationForm = () => {
   const { carWashId } = useParams();
@@ -44,6 +44,8 @@ const RegistrationForm = () => {
       const response = await axios.post(`https://serene-peak-68584-65eee5519a14.herokuapp.com/api/users/${carWashId}/register`, userData);
       toast.success('Registration successful');
       navigate(`/staff/dashboard/${carWashId}`); // Navigate to the staff dashboard with the carWashId
+      console.log(response);
+    
     } catch (error) {
       toast.error('Registration failed. Please try again.');
     }

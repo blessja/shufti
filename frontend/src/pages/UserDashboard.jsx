@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate, Link, useParams } from 'react-router-dom';
+import { useNavigate,  useParams } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import List from '@material-ui/core/List';
@@ -30,7 +30,7 @@ function UserDashboard() {
       // Fetch user information and wash history from the server
       fetchUserData(user._id); // Assuming the user object has an _id property
     }
-  }, [user, navigate]);
+  }, [user, navigate, carWashId]);
   
   const fetchUserData = async (userId) => {
     try {
@@ -56,10 +56,10 @@ function UserDashboard() {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-  const getNextWashNumber = () => {
-    const lastWashNumber = washHistory.length;
-    return lastWashNumber + 1;
-  };
+  // const getNextWashNumber = () => {
+  //   const lastWashNumber = washHistory.length;
+  //   return lastWashNumber + 1;
+  // };
 
   const onLogout = () => {
     dispatch(logout());

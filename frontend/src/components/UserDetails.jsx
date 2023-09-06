@@ -22,7 +22,7 @@ const theme = createTheme({
 const UserDetails = () => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  // const [ setIsButtonDisabled] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
 
   const handleHomeClick = () => {
@@ -37,7 +37,8 @@ const UserDetails = () => {
         );
         const data = await response.json();
         setUser(data);
-        setIsButtonDisabled(localStorage.getItem(id) === "true");
+        // setIsButtonDisabled(localStorage.getItem(id) === "true");
+        // console.log("setIsButtonDisabled");
       } catch (error) {
         console.error("Error fetching user:", error);
       }
@@ -57,7 +58,7 @@ const UserDetails = () => {
       const data = await response.json();
       setUser(data);
       console.log("Wash history updated");
-      setIsButtonDisabled(true);
+      // setIsButtonDisabled(true);
       localStorage.setItem(id, "true");
       setShowNotification(true);
     } catch (error) {
