@@ -1,14 +1,13 @@
 {
   "name": "carwash",
   "version": "1.0.0",
-  "description": "Orange Car Wash Services",
+  "description": "shufti Car Wash Services",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix ../frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Blessing Jackson",
   "license": "MIT",
