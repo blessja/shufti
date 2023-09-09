@@ -15,7 +15,7 @@ connectDB();
 
 const app = express();
 app.use(cors({
-  origin: ["https://shufti-server.onrender.com", "https://shufti.onrender.com, https://shufti-production.up.railway.app"],
+  origin: ["https://shufti-server.onrender.com", "https://shufti.onrender.com", "https://shufti-production.up.railway.app"],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
 }));
