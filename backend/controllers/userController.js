@@ -219,7 +219,7 @@ const getUserWashHistory = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   // Find the user by ID
-  const user = await User.findById(id);
+  const user = await User.findById(req.params.id);
 
   if (!user) {
     res.status(404);
