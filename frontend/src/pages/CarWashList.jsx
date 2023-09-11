@@ -12,7 +12,7 @@ const CarWashList = () => {
   // Function to fetch car washes
   const fetchCarWashes = async () => {
     try {
-      const response = await axios.get('https://shufti-server.onrender.com/api/carwashes');
+      const response = await axios.get('https://shufti-production.up.railway.app/api/carwashes');
       setCarWashes(response.data);
     } catch (error) {
       console.error('Error fetching car washes:', error);

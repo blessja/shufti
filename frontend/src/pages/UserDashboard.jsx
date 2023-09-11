@@ -34,7 +34,7 @@ function UserDashboard() {
   
   const fetchUserData = async (userId) => {
     try {
-      const response = await fetch(`https://shufti-server.onrender.com/api/users/${userId}`);
+      const response = await fetch(`https://shufti-production.up.railway.app/api/users/${userId}`);
       const data = await response.json();
 
       // console.log('Response:', data);
